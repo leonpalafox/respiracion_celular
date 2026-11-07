@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Respiración celular</title>
+  <meta name="description" content="Viaje interactivo en 3D por la respiración celular: glucólisis, oxidación del piruvato, ciclo de Krebs y fosforilación oxidativa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="20" rx="17" ry="11" fill="#f59e5b"/><path d="M6 20c3-6 4 6 7 0s4 6 7 0 4 6 7 0 4 6 7 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <span>Respiración celular</span>
+    </a>
+    <nav class="steps" id="steps" aria-label="Estaciones"></nav>
+  </header>
+
+  <main class="app">
+    <section class="stage" id="stage" aria-label="Modelo 3D">
+      <div class="place" id="place"></div>
+      <div class="ledger hide" id="ledger"></div>
+      <div class="legend" id="legend"></div>
+      <div class="hint" id="hint">Arrastra para girar</div>
+      <button class="reset-view" id="resetView" title="Centrar la vista">⟲ Centrar</button>
+      <noscript><p class="nojs">Esta página necesita JavaScript.</p></noscript>
+    </section>
+
+    <aside class="panel" id="panel">
+      <div class="panel-body" id="panel-body"></div>
+      <footer class="panel-foot">
+        <p class="ste">Texto escrito con las reglas de ASD-STE100 adaptadas al español: frases cortas, una idea por frase, voz activa y una sola palabra para cada concepto.</p>
+      </footer>
+      <nav class="panel-nav">
+        <button class="btn ghost" id="prev">← Anterior</button>
+        <span id="count">1 / 14</span>
+        <button class="btn primary" id="next">Siguiente →</button>
+      </nav>
+    </aside>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+  <script src="js/engine.js?v=2"></script>
+  <script src="js/models.js?v=2"></script>
+  <script src="js/app.js?v=2"></script>
+  <script src="js/s1-inicio.js?v=2"></script>
+  <script src="js/s2-etapas.js?v=2"></script>
+  <script src="js/s3-fosf.js?v=2"></script>
+  <script src="js/s4-extra.js?v=2"></script>
+  <script>
+    // Espera las fuentes: el texto de los modelos 3D usa Fredoka.
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve())
+      .then(() => Promise.all([document.fonts.load('600 72px Fredoka'), document.fonts.load('700 16px "Atkinson Hyperlegible"')]).catch(() => {}))
+      .then(() => App.start());
+  </script>
+</body>
+</html>
